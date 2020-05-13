@@ -1,5 +1,5 @@
-<?php
+>?php
 
-print 'edited version'
+print 'sarkarchya aichi gand'
 
 ?>

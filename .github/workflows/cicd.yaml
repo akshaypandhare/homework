@@ -15,7 +15,7 @@ jobs:
 
     - name: Get updated directories
       run: |
-        git fetch --depth=1 origin +refs/heads/main
+        git fetch --depth=1 origin +refs/heads/master
         changed_dirs=$(git diff --name-only HEAD^ HEAD | awk -F/ '{print $1}' | uniq)
         echo "Updated directories: $changed_dirs"
 

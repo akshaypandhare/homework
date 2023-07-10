@@ -1,0 +1,21 @@
+name: Check Updated Directories
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  check-updated-dirs:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Get updated directories
+      run: |
+        git fetch --depth=1 origin +refs/heads/main
+        changed_dirs=$(git diff --name-only HEAD^ HEAD | awk -F/ '{print $1}' | uniq)
+        echo "Updated directories: $changed_dirs"
+

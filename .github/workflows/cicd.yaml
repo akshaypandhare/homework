@@ -11,11 +11,21 @@ jobs:
     
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: Base SHA
+      id: base-sha
+      run: echo "sha=$(git rev-parse origin/master)" >> $GITHUB_OUTPUT
 
-    - name: Get updated directories
+    - name: Get Changed Directories
+      id: changed-directories
+      uses: tj-actions/changed-files@v35
+      with:
+        base_sha: "${{ steps.base-sha.outputs.sha }}"
+
+    - name: List all changed files
       run: |
-        git fetch --depth=1 origin +refs/heads/master
-        changed_dirs=$(git diff --name-only HEAD^ HEAD | awk -F/ '{print $1}' | uniq)
-        echo "Updated directories: $changed_dirs"
-
+        for file in ${{ steps.changed-directories.outputs.all_changed_and_modified_files }}; do
+          echo $file
+        done

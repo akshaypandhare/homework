@@ -1,4 +1,4 @@
-sefnwlefknwenfkjwname: Check Updated Directories
+wefnwlsefnwlefknwenfkjwname: Check Updated Directories
 
 on:
   push:

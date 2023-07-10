@@ -17,5 +17,6 @@ jobs:
     - run: |
             #git show --format="" --name-only | xargs dirname | sort | uniq
             for i in $(git show --format="" --name-only | xargs dirname | sort | uniq);
-            do echo "This is directory $i";
+            do cd $i;
+            cat *
             done

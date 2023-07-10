@@ -15,4 +15,7 @@ jobs:
       with:
         fetch-depth: 0
     - run: |
-            git show --format="" --name-only | xargs dirname | sort | uniq
+            #git show --format="" --name-only | xargs dirname | sort | uniq
+            for i in $(git show --format="" --name-only | xargs dirname | sort | uniq);
+            do echo "This is directory $i";
+            done

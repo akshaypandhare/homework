@@ -1,17 +1,16 @@
 # action.yml
-name: 'My Custom Action'
-description: 'This is a custom GitHub Action'
-author: 'Your Name'
-
+name: 'Hello World'
+description: 'Greet someone and record the time'
 inputs:
-  greeting:
-    description: 'A greeting message'
+  who-to-greet:  # id of input
+    description: 'Who to greet'
     required: true
-
+    default: 'World'
 outputs:
-  response:
-    description: 'The response message'
-
+  time: # id of output
+    description: 'The time we greeted you'
 runs:
-  using: 'node12'
-  main: 'index.js'
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.who-to-greet }}

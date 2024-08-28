@@ -3,7 +3,7 @@ name: Check Updated Directories
 on:
   push:
     branches:
-      - master
+      - test
 
 jobs:
   check-updated-dirs:

@@ -1,0 +1,17 @@
+# action.yml
+name: 'My Custom Action'
+description: 'This is a custom GitHub Action'
+author: 'Your Name'
+
+inputs:
+  greeting:
+    description: 'A greeting message'
+    required: true
+
+outputs:
+  response:
+    description: 'The response message'
+
+runs:
+  using: 'node12'
+  main: 'index.js'

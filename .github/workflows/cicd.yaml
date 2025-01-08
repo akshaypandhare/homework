@@ -13,5 +13,5 @@ jobs:
       # Install Docker if not present
       - name: Install Docker
         run: |
-         docker build -t akshay .
-         docker run -d --name flask-app -p 5000:5000 akshay
+         sudo docker build -t akshay .
+         sudo docker run -d --name flask-app -p 5000:5000 akshay

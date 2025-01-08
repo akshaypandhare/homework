@@ -1,10 +1,18 @@
-# Container image that runs your code
-FROM alpine:3.10
+# Use Python base image
+FROM python:3.9-slim
 
-# Copies your code file from your action repository to the filesystem path `/` of the container
-COPY entrypoint.sh /entrypoint.sh
+# Set working directory
+WORKDIR /app
 
-RUN chmod +x /entrypoint.sh
+# Copy requirements first to leverage Docker cache
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-# Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["/entrypoint.sh"]
+# Copy application code
+COPY app.py .
+
+# Expose port 5000
+EXPOSE 5000
+
+# Command to run the application
+CMD ["python", "app.py"]

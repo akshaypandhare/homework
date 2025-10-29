@@ -23,6 +23,7 @@ jobs:
 
   tag-and-push-admin-image:
     name: testing variables.
+    runs-on: ubuntu-latest
     steps:
       - name: testing
         id: testing

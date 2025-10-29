@@ -8,6 +8,7 @@ on:
 jobs:
   notify-build-start:
     name: Notify MS Teams of build start
+    runs-on: ubuntu-latest
     steps:
       - name: Check out repo
         uses: actions/checkout@v4

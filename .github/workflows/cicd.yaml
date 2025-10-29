@@ -1,17 +1,30 @@
-name: Deploy Flask App
+name: Deploy to Stage environment
 
 on:
   push:
-    branches: [ master ]  # or your default branch name
+    tags:
+      - "v*"
 
 jobs:
-  deploy:
-    runs-on: self-hosted
+  notify-build-start:
+    name: Notify MS Teams of build start
     steps:
-      - uses: actions/checkout@v3
-      
-      # Install Docker if not present
-      - name: Install Docker
+      - name: Check out repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get commit message
+        id: get-commit-message
         run: |
-         sudo docker build -t akshay .
-         sudo docker run -d --name flask-app -p 5000:5000 akshay
+          echo ${{ github.sha }}
+          echo ${{ github.ref_name }}
+
+  tag-and-push-admin-image:
+    name: testing variables.
+    steps:
+      - name: testing
+        id: testing
+        run: |
+          echo ${{ github.sha }}
+          echo ${{ github.ref_name }}

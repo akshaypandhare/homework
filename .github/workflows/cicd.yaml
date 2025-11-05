@@ -13,3 +13,8 @@ jobs:
       - name: Validate input format
         run: |
           echo ${{ github.ref_name }}
+          if [[ ${{ github.ref_name }} == v.1.2.29 ]]; then
+            echo "True"
+          else
+            echo "False"
+          fi

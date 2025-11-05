@@ -12,10 +12,4 @@ jobs:
 
       - name: Validate input format
         run: |
-          # echo ${{ GITHUB_REF_NAME }}
-          # if [[ "${{ GITHUB_REF_NAME }}" == v.1.2.24 ]]; then
-          #   echo "True"
-          # else
-          #   echo "False"
-          # fi
           echo ${{ github.ref_name }}

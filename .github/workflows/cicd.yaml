@@ -2,37 +2,15 @@ name: Deploy to Prod environment
 
 on:
   workflow_dispatch:
-    inputs:
-      version_tag:
-        description: "Enter the version tag to deploy to production (e.g., v1.2.3)"
-        type: string
-        required: true
 
 jobs:
-  notify-build-start:
-    name: Notify MS Teams of build start
+  validate-tag-format:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repo
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          ref: ${{ github.event.inputs.version_tag }}
-          fetch-tags: true 
 
-      - name: Get commit message
-        id: get-commit-message
+      - name: Validate input format
         run: |
-          echo ${{ github.sha }}
           echo ${{ github.ref_name }}
-          git tag -l
-
-  tag-and-push-admin-image:
-    name: testing variables.
-    runs-on: ubuntu-latest
-    steps:
-      - name: testing
-        id: testing
-        run: |
           echo ${{ github.sha }}
-          echo ${{ github.ref_name }}

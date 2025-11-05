@@ -12,5 +12,9 @@ jobs:
 
       - name: Validate input format
         run: |
-          echo ${{ github.ref_name }}
-          echo ${{ github.sha }}
+          if [[ "${GITHUB_REF_NAME}" == "v.1.20" ]]; then
+            echo "True"
+          else
+            echo "False"
+          fi
+        

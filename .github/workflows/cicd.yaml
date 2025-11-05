@@ -12,7 +12,7 @@ jobs:
 
       - name: Validate input format
         run: |
-          if [[ "${GITHUB_REF_NAME}" == "v.1.20" ]]; then
+          if [[ "${GITHUB_REF_NAME}" == "v.1.21" ]]; then
             echo "True"
           else
             echo "False"
